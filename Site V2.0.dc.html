@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><rect width="200" height="200" fill="#000"/><text x="30" y="115" font-family="sans-serif" font-size="48" font-weight="700" fill="#ec3013">IA</text></svg></template>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <script src="./image-slot.js"></script>
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <style>
+    *{box-sizing:border-box;}
+    html,body{margin:0;height:100%;background:#000;}
+    a{color:#fff;text-decoration:none;transition:color .3s ease;}
+    a:hover{color:#ec3013;}
+    button{font-family:'Inter',sans-serif;}
+    @keyframes fadeInUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+    @keyframes popIn{0%{opacity:0;transform:scale(0.82);}100%{opacity:1;transform:scale(1);}}
+    ::-webkit-scrollbar{width:8px;}
+    ::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.18);}
+  </style>
+</helmet>
+
+<div style="position:fixed;inset:0;background:#000;font-family:'Inter',sans-serif;overflow:hidden;">
+
+  <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+    <div style="position:absolute;inset:0;overflow:hidden;background:#000;">
+      <div id="ia-yt-home" style="position:absolute;top:50%;left:50%;width:177.78vh;height:100vh;min-width:100vw;min-height:56.25vw;transform:translate(-50%,-50%);pointer-events:none;"></div>
+    </div>
+    <div style="position:absolute;inset:0;background:linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.5) 80%, rgba(0,0,0,0.85) 100%);pointer-events:none;"></div>
+  </sc-if>
+
+  <sc-if value="{{ isMusic }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute;inset:0;overflow:hidden;background:#000;">
+      <div style="{{ musicVideoBgStyle }}">
+        <div id="ia-yt-music" style="position:absolute;top:50%;left:50%;width:177.78vh;height:100vh;min-width:100vw;min-height:56.25vw;transform:translate(-50%,-50%);pointer-events:none;"></div>
+      </div>
+      <sc-for list="{{ musicBgSlots }}" as="slot" hint-placeholder-count="4">
+        <image-slot id="{{ slot.id }}" shape="rect" placeholder="{{ slot.placeholder }}" src="{{ slot.src }}" style="{{ slot.style }}"></image-slot>
+      </sc-for>
+    </div>
+    <div style="position:absolute;inset:0;background:linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.5) 80%, rgba(0,0,0,0.85) 100%);pointer-events:none;"></div>
+    <div style="position:absolute;left:0;right:0;top:0;height:150px;background:#000;z-index:6;pointer-events:none;"></div>
+    <div style="position:absolute;left:0;right:0;bottom:0;height:190px;background:#000;z-index:6;pointer-events:none;"></div>
+  </sc-if>
+
+  <sc-if value="{{ isCulture }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute;inset:0;overflow:hidden;background:#000;">
+      <a href="https://themodelexperience.com/collections/nyfwf-2025-tickets" target="_blank" rel="noopener" style="{{ cultureFlyerStyle }}">
+        <img src="uploads/fashionweek.png" alt="NY Fashion Week Festival — September 12th, New York" style="display:block;width:100%;height:100%;object-fit:contain;background:#000;" />
+      </a>
+      <sc-for list="{{ cultureSlots }}" as="slot" hint-placeholder-count="3">
+        <image-slot id="{{ slot.id }}" shape="rect" placeholder="{{ slot.placeholder }}" src="{{ slot.src }}" style="{{ slot.style }}"></image-slot>
+      </sc-for>
+      <sc-for list="{{ cultureVideos }}" as="vid" hint-placeholder-count="2">
+        <div style="{{ vid.wrapStyle }}">
+          <iframe src="{{ vid.src }}" style="{{ vid.frameStyle }}" allow="autoplay" allowfullscreen></iframe>
+        </div>
+      </sc-for>
+      <div style="{{ cultureYtWrapStyle }}">
+        <div id="ia-yt-culture" style="position:absolute;top:50%;left:50%;width:177.78vh;height:100vh;min-width:100vw;min-height:56.25vw;transform:translate(-50%,-50%);pointer-events:none;"></div>
+      </div>
+      <a href="https://born2win.store" target="_blank" rel="noopener" style="{{ cultureShopStyle }}">
+        <img src="assets/born2win-shop.png" alt="Born 2 Win store" style="display:block;width:100%;height:100%;object-fit:contain;background:#000;"/>
+      </a>
+      <video ref="{{ cultureMovRef }}" src="uploads/bethost.mp4" muted="{{ true }}" autoPlay="{{ true }}" loop="{{ true }}" preload="auto" playsInline="{{ true }}" onTimeUpdate="{{ onMovTime }}" style="{{ cultureMovStyle }}"></video>
+    </div>
+    <div style="position:absolute;inset:0;background:linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.15) 40%, rgba(0,0,0,0.55) 80%, rgba(0,0,0,0.85) 100%);pointer-events:none;"></div>
+  </sc-if>
+
+  <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+    <button onClick="{{ toggleHomeSound }}" style="position:absolute;left:40px;top:40px;z-index:30;width:44px;height:44px;background:transparent;border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0.55;transition:opacity .2s;" style-hover="opacity:1;">
+      <sc-if value="{{ homeMuted }}" hint-placeholder-val="{{ true }}">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4V5z"></path><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+      </sc-if>
+      <sc-if value="{{ homeUnmuted }}" hint-placeholder-val="{{ false }}">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4V5z"></path><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg>
+      </sc-if>
+    </button>
+    <div ref="{{ homeWrapRef }}" style="position:relative;z-index:10;min-height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:0 40px 60px;">
+      <div style="{{ homeBarStyle }}"></div>
+      <div style="animation:popIn 0.9s cubic-bezier(0.34,1.56,0.64,1) 6s both;">
+        <h1 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(56px,12vw,140px);color:#fff;margin:0;line-height:0.9;letter-spacing:2px;text-transform:uppercase;">International<br/>Angelo</h1>
+      </div>
+      <div ref="{{ dividerMarkerRef }}" style="width:80px;height:3px;background:transparent;margin:28px 0 24px 0;"></div>
+      <div style="animation:fadeInUp 0.8s ease-out 6.5s both;">
+        <div style="display:flex;gap:32px;align-items:center;flex-wrap:wrap;">
+          <sc-for list="{{ homeMainLinks }}" as="item" hint-placeholder-count="3">
+            <a href="#" ref="{{ item.setRef }}" onClick="{{ item.onClick }}" onMouseEnter="{{ item.onEnter }}" onMouseLeave="{{ item.onLeave }}" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(20px,2.2vw,28px);letter-spacing:2px;color:#fff;text-transform:uppercase;padding-bottom:6px;cursor:pointer;" style-hover="color:#ec3013;">{{ item.label }}</a>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isMusic }}" hint-placeholder-val="{{ false }}">
+    <div style="position:relative;z-index:10;height:100%;">
+      <button onClick="{{ toggleSound }}" style="position:absolute;left:40px;top:40px;width:44px;height:44px;background:transparent;border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0.55;transition:opacity .2s;z-index:20;" style-hover="opacity:1;">
+        <sc-if value="{{ musicMuted }}" hint-placeholder-val="{{ false }}">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4V5z"></path><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+        </sc-if>
+        <sc-if value="{{ musicUnmuted }}" hint-placeholder-val="{{ true }}">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4V5z"></path><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg>
+        </sc-if>
+      </button>
+      <button onClick="{{ prevMusicSlot }}" style="position:absolute;left:20px;top:50%;transform:translateY(-50%);background:transparent;border:none;color:#fff;font-size:58px;line-height:1;cursor:pointer;padding:14px;opacity:0.55;transition:opacity .2s;" style-hover="color:#ec3013;opacity:1;">&#8249;</button>
+      <button onClick="{{ nextMusicSlot }}" style="position:absolute;right:20px;top:50%;transform:translateY(-50%);background:transparent;border:none;color:#fff;font-size:58px;line-height:1;cursor:pointer;padding:14px;opacity:0.55;transition:opacity .2s;" style-hover="color:#ec3013;opacity:1;">&#8250;</button>
+      <div style="position:absolute;left:0;right:0;bottom:44px;display:flex;justify-content:center;gap:10px;">
+        <sc-for list="{{ musicDots }}" as="dot" hint-placeholder-count="6">
+          <button onClick="{{ dot.onClick }}" style="{{ dot.style }}"></button>
+        </sc-for>
+      </div>
+      <div style="position:absolute;right:40px;bottom:44px;display:flex;align-items:center;gap:14px;">
+        <sc-if value="{{ currentSong.hasArt }}" hint-placeholder-val="{{ true }}">
+          <div style="width:44px;height:44px;flex-shrink:0;border:1px solid rgba(255,255,255,0.3);transition:transform .25s ease,border-color .25s ease;transform-origin:right bottom;position:relative;z-index:25;" style-hover="transform:scale(3);border-color:rgba(255,255,255,0.6);">
+            <image-slot id="{{ currentSong.artId }}" shape="rect" placeholder="Album Art" src="{{ currentSong.artSrc }}" style="width:100%;height:100%;display:block;"></image-slot>
+          </div>
+        </sc-if>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <span style="font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:2px;text-transform:uppercase;color:#fff;white-space:nowrap;">{{ currentSong.title }}</span>
+          <sc-for list="{{ currentSong.links }}" as="lnk" hint-placeholder-count="1">
+            <a href="{{ lnk.href }}" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;opacity:0.7;transition:opacity .2s;" style-hover="opacity:1;">
+              <sc-if value="{{ lnk.isApple }}" hint-placeholder-val="{{ false }}">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M23.994 6.124a9.23 9.23 0 00-.24-2.19c-.317-1.31-1.062-2.31-2.18-3.043A5.022 5.022 0 0019.63.165a10.18 10.18 0 00-1.988-.127C17.092.014 16.543 0 14.143 0h-4.29c-2.4 0-2.948.014-3.498.038a10.18 10.18 0 00-1.988.127A5.024 5.024 0 002.42.891C1.3 1.625.557 2.624.24 3.934A9.23 9.23 0 000 6.124C.014 6.674 0 7.224 0 9.624v4.752c0 2.4.014 2.95.038 3.5a9.23 9.23 0 00.24 2.19c.317 1.31 1.062 2.31 2.18 3.043a5.024 5.024 0 001.947.726c.656.122 1.32.164 1.988.127.55.024 1.1.038 3.5.038h4.29c2.4 0 2.948-.014 3.498-.038a10.18 10.18 0 001.988-.127 5.022 5.022 0 001.947-.726c1.118-.733 1.863-1.733 2.18-3.043a9.23 9.23 0 00.24-2.19c.024-.55.038-1.1.038-3.5V9.624c-.002-2.4-.016-2.95-.04-3.5zm-6.736 3.12v7.632a3.56 3.56 0 01-.062.72 1.846 1.846 0 01-1.08 1.35c-.498.222-1.02.308-1.56.3a2.413 2.413 0 01-.54-.06 1.59 1.59 0 01-1.14-1.14 1.594 1.594 0 01.36-1.5c.33-.36.75-.576 1.23-.66.36-.066.72-.12 1.08-.192a.65.65 0 00.54-.66V9.724a.353.353 0 00-.09-.27.36.36 0 00-.27-.09l-4.5.87a.367.367 0 00-.3.36v8.58a5.07 5.07 0 01-.042.6 1.87 1.87 0 01-1.08 1.47c-.48.216-.99.3-1.518.3a2.48 2.48 0 01-.6-.072 1.59 1.59 0 01-1.098-1.14 1.588 1.588 0 01.36-1.5c.33-.36.748-.578 1.228-.66.36-.066.72-.12 1.08-.192a.65.65 0 00.54-.66V7.444c0-.258.09-.48.27-.66a.86.86 0 01.48-.24l5.4-1.08c.18-.036.33-.018.45.054a.33.33 0 01.15.3l.006 3.426z"></path></svg>
+              </sc-if>
+              <sc-if value="{{ lnk.isYoutube }}" hint-placeholder-val="{{ true }}">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"></path><path d="m10 15 5-3-5-3z"></path></svg>
+              </sc-if>
+              <sc-if value="{{ lnk.isSpotify }}" hint-placeholder-val="{{ false }}">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424a.622.622 0 01-.857.207c-2.348-1.435-5.304-1.76-8.785-.964a.622.622 0 11-.277-1.213c3.809-.87 7.076-.496 9.712 1.113a.622.622 0 01.207.857zm1.224-2.719a.78.78 0 01-1.072.257c-2.687-1.652-6.785-2.131-9.965-1.166a.78.78 0 01-.973-.517.78.78 0 01.517-.972c3.632-1.102 8.147-.568 11.236 1.327a.78.78 0 01.257 1.071zm.105-2.835C14.692 8.95 9.375 8.775 6.297 9.71a.934.934 0 11-.542-1.79c3.533-1.072 9.404-.865 13.115 1.338a.934.934 0 01-.955 1.613z"></path></svg>
+              </sc-if>
+            </a>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isCulture }}" hint-placeholder-val="{{ false }}">
+    <div style="position:relative;z-index:10;height:100%;">
+      <button onClick="{{ prevCultureSlot }}" style="position:absolute;left:20px;top:50%;transform:translateY(-50%);background:transparent;border:none;color:#fff;font-size:34px;line-height:1;cursor:pointer;padding:14px;" style-hover="color:#ec3013;">&#8249;</button>
+      <button onClick="{{ nextCultureSlot }}" style="position:absolute;right:20px;top:50%;transform:translateY(-50%);background:transparent;border:none;color:#fff;font-size:34px;line-height:1;cursor:pointer;padding:14px;" style-hover="color:#ec3013;">&#8250;</button>
+      <div style="position:absolute;left:40px;right:40px;bottom:60px;display:flex;align-items:center;">
+        <sc-if value="{{ isCultureShop }}" hint-placeholder-val="{{ false }}">
+          <a href="https://born2win.store" target="_blank" rel="noopener" style="font-family:'Inter',sans-serif;font-size:13px;letter-spacing:0.5px;color:rgba(255,255,255,0.85);border-bottom:1px solid rgba(236,48,19,0.8);padding-bottom:2px;" style-hover="color:#ec3013;">Shop now</a>
+        </sc-if>
+        <sc-if value="{{ isCultureFlyer }}" hint-placeholder-val="{{ false }}">
+          <a href="https://themodelexperience.com/collections/nyfwf-2025-tickets" target="_blank" rel="noopener" style="font-family:'Inter',sans-serif;font-size:13px;letter-spacing:0.5px;color:rgba(255,255,255,0.85);border-bottom:1px solid rgba(236,48,19,0.8);padding-bottom:2px;" style-hover="color:#ec3013;">Click here to Buy Tickets</a>
+        </sc-if>
+        <sc-if value="{{ isCultureSlot0 }}" hint-placeholder-val="{{ false }}">
+          <span style="font-family:'Inter',sans-serif;font-size:13px;letter-spacing:0.5px;color:rgba(255,255,255,0.85);margin-right:24px;">Deante' Kyle of Grits &amp; Eggs Podcast at BET Awards 2026</span>
+          <a href="https://www.youtube.com/@GritsAndEggsPodcast" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;width:40px;height:40px;opacity:0.75;transition:opacity .2s;" style-hover="opacity:1;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"></path><path d="m10 15 5-3-5-3z"></path></svg>
+          </a>
+          <a href="https://www.patreon.com/cw/TheGritsAndEggsPodcast" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;width:40px;height:40px;opacity:0.75;transition:opacity .2s;" style-hover="opacity:1;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><circle cx="15" cy="9.6" r="6.4"></circle><rect x="2.4" y="2" width="4" height="20"></rect></svg>
+          </a>
+        </sc-if>
+      </div>
+      <div style="position:absolute;left:0;right:0;bottom:44px;display:flex;justify-content:center;gap:10px;">
+        <sc-for list="{{ cultureDots }}" as="dot" hint-placeholder-count="4">
+          <button onClick="{{ dot.onClick }}" style="{{ dot.style }}"></button>
+        </sc-for>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isMedia }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute;inset:0;background:url('assets/culture-2.jpg') center 10%/cover no-repeat;"></div>
+    <div style="position:absolute;inset:0;background:rgba(0,0,0,0.72);"></div>
+    <div style="position:relative;z-index:10;height:100%;display:flex;flex-direction:column;padding:120px 6vw 44px;">
+      <div style="margin-top:auto;display:flex;flex-direction:column;gap:22px;align-items:flex-end;margin-left:auto;">
+        <a href="https://700records.com" onClick="{{ openDashboardRecords }}" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(20px,2.2vw,28px);letter-spacing:2px;color:#fff;text-transform:uppercase;padding-bottom:6px;cursor:pointer;" style-hover="color:#ec3013;">700 Records</a>
+        <a href="#" onClick="{{ openDashboardBamg }}" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(20px,2.2vw,28px);letter-spacing:2px;color:#fff;text-transform:uppercase;padding-bottom:6px;cursor:pointer;" style-hover="color:#ec3013;">Bay Area Media Group</a>
+      </div>
+      <div style="margin-top:32px;display:flex;flex-direction:column;align-items:flex-end;">
+        <div style="width:100%;height:1px;background:rgba(255,255,255,0.15);margin-bottom:20px;"></div>
+        <a href="mailto:Tharealangelo@gmail.com" style="display:inline-flex;align-items:center;gap:10px;font-size:13px;letter-spacing:2px;color:rgba(255,255,255,0.6);text-transform:uppercase;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 01-2.06 0L2 7"></path></svg>
+          <span>For business inquiries</span>
+        </a>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isAbout }}" hint-placeholder-val="{{ false }}">
+    <div style="position:relative;z-index:10;height:100%;overflow-y:auto;padding:120px 6vw 120px;">
+      <h2 style="margin:0;font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,5vw,72px);letter-spacing:1px;text-transform:uppercase;color:#fff;line-height:0.95;">International Angelo</h2>
+      <div style="width:80px;height:3px;background:#ec3013;margin:24px 0 8px 0;"></div>
+
+      <div style="margin-top:48px;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:4px;color:#ec3013;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:10px;">Reach &amp; Analytics</div>
+      <div style="margin-top:28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));">
+        <sc-for list="{{ aboutStats }}" as="stat" hint-placeholder-count="5">
+          <div style="position:relative;padding:26px 22px;border:1px solid rgba(255,255,255,0.12);" style-hover="--tip:1;border-color:rgba(255,255,255,0.3);">
+            <div style="font-weight:700;font-size:clamp(24px,2.4vw,34px);letter-spacing:-0.01em;color:#fff;">{{ stat.display }}</div>
+            <div style="margin-top:8px;font-weight:400;font-size:12px;letter-spacing:0.04em;text-transform:uppercase;color:rgba(255,255,255,0.5);">{{ stat.label }}</div>
+            <div style="position:absolute;left:22px;right:22px;bottom:-6px;transform:translateY(100%);opacity:var(--tip,0);transition:opacity .2s;pointer-events:none;font-size:12px;line-height:1.4;color:rgba(255,255,255,0.75);background:#141414;border:1px solid rgba(255,255,255,0.15);padding:10px 12px;z-index:20;">{{ stat.detail }}</div>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="margin-top:56px;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:4px;color:#ec3013;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:10px;">Top Streaming Platforms</div>
+      <div style="margin-top:24px;display:flex;flex-direction:column;gap:14px;max-width:640px;">
+        <sc-for list="{{ platformBars }}" as="row" hint-placeholder-count="5">
+          <div style="display:flex;align-items:center;gap:16px;">
+            <div style="width:110px;flex-shrink:0;font-size:13px;color:rgba(255,255,255,0.65);">{{ row.label }}</div>
+            <div style="flex:1;height:8px;background:rgba(255,255,255,0.08);position:relative;">
+              <div style="height:100%;background:#ec3013;width:{{ row.width }};transition:width 1.1s cubic-bezier(.16,.84,.44,1);"></div>
+            </div>
+            <div style="width:60px;flex-shrink:0;text-align:right;font-size:13px;color:#fff;">{{ row.value }}</div>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="margin-top:56px;display:flex;flex-wrap:wrap;gap:64px;">
+        <div style="flex:1;min-width:280px;">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:4px;color:#ec3013;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:10px;">Audience &mdash; Gender &amp; Age</div>
+          <div style="margin-top:22px;display:flex;gap:40px;">
+            <div>
+              <div style="font-weight:700;font-size:30px;color:#fff;">54%</div>
+              <div style="font-size:12px;color:rgba(255,255,255,0.5);text-transform:uppercase;">Male</div>
+            </div>
+            <div>
+              <div style="font-weight:700;font-size:30px;color:#fff;">43%</div>
+              <div style="font-size:12px;color:rgba(255,255,255,0.5);text-transform:uppercase;">Female</div>
+            </div>
+          </div>
+          <div style="margin-top:26px;display:flex;flex-direction:column;gap:12px;">
+            <sc-for list="{{ ageBars }}" as="row" hint-placeholder-count="3">
+              <div style="display:flex;align-items:center;gap:16px;">
+                <div style="width:70px;flex-shrink:0;font-size:13px;color:rgba(255,255,255,0.65);">{{ row.label }}</div>
+                <div style="flex:1;height:8px;background:rgba(255,255,255,0.08);position:relative;">
+                  <div style="height:100%;background:#ec3013;width:{{ row.width }};transition:width 1.1s cubic-bezier(.16,.84,.44,1);"></div>
+                </div>
+                <div style="width:50px;flex-shrink:0;text-align:right;font-size:13px;color:#fff;">{{ row.value }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+        <div style="flex:1;min-width:280px;">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:4px;color:#ec3013;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:10px;">Top Audience Cities</div>
+          <div style="margin-top:22px;display:flex;flex-direction:column;gap:12px;">
+            <sc-for list="{{ cityBars }}" as="row" hint-placeholder-count="5">
+              <div style="display:flex;align-items:center;gap:16px;">
+                <div style="width:130px;flex-shrink:0;font-size:13px;color:rgba(255,255,255,0.65);">{{ row.label }}</div>
+                <div style="flex:1;height:8px;background:rgba(255,255,255,0.08);position:relative;">
+                  <div style="height:100%;background:#ec3013;width:{{ row.width }};transition:width 1.1s cubic-bezier(.16,.84,.44,1);"></div>
+                </div>
+                <div style="width:50px;flex-shrink:0;text-align:right;font-size:13px;color:#fff;">{{ row.value }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:56px;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:4px;color:#ec3013;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:10px;">The Brand Ecosystem</div>
+      <div style="margin-top:24px;display:flex;flex-direction:column;">
+        <sc-for list="{{ ecosystem }}" as="eco" hint-placeholder-count="4">
+          <div style="display:flex;flex-wrap:wrap;gap:24px;padding:16px 0;border-bottom:1px solid rgba(255,255,255,0.1);">
+            <div style="width:200px;flex-shrink:0;font-weight:700;font-size:13px;letter-spacing:0.06em;text-transform:uppercase;color:#fff;">{{ eco.label }}</div>
+            <div style="flex:1;min-width:220px;font-size:14px;line-height:1.5;color:rgba(255,255,255,0.65);">{{ eco.desc }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ dashboardOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;inset:0;z-index:300;background:#050505;overflow-y:auto;animation:fadeInUp 0.35s ease-out both;">
+      <button onClick="{{ closeDashboard }}" style="position:fixed;right:32px;top:28px;z-index:310;width:44px;height:44px;background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.25);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#fff;opacity:0.8;transition:opacity .2s,border-color .2s,color .2s;" style-hover="opacity:1;border-color:#ec3013;color:#ec3013;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+      <div style="max-width:920px;margin:0 auto;padding:100px 24px 80px;">
+        <sc-if value="{{ isDashRecords }}" hint-placeholder-val="{{ true }}">
+          <img src="assets/700-records-logo.png" alt="700 Records" style="display:block;height:192px;max-width:100%;width:auto;object-fit:contain;margin-bottom:28px;"/>
+        </sc-if>
+        <sc-if value="{{ isDashBamg }}" hint-placeholder-val="{{ false }}">
+          <img src="assets/bamg-logo-full.png" alt="Bay Area Media Group" style="display:block;height:192px;max-width:100%;width:auto;object-fit:contain;margin-bottom:28px;"/>
+        </sc-if>
+        <div style="display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+          <h2 style="margin:0;font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,5vw,64px);letter-spacing:1px;color:#fff;text-transform:uppercase;">{{ dashboardTitle }}</h2>
+          <span style="font-size:13px;letter-spacing:2px;color:rgba(255,255,255,0.5);text-transform:uppercase;">{{ dashboardSubtitle }}</span>
+        </div>
+        <div style="width:80px;height:3px;background:#ec3013;margin:20px 0 36px;"></div>
+
+        <sc-if value="{{ isDashRecords }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;gap:28px;flex-wrap:wrap;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:16px;">
+          <sc-for list="{{ dashboardTabs }}" as="tab" hint-placeholder-count="4">
+            <button onClick="{{ tab.onClick }}" style="{{ tab.style }}">{{ tab.label }}</button>
+          </sc-for>
+        </div>
+
+        <sc-if value="{{ isDashOverview }}" hint-placeholder-val="{{ true }}">
+          <div style="margin-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:rgba(255,255,255,0.12);">
+            <sc-for list="{{ dashOverviewStats }}" as="stat" hint-placeholder-count="3">
+              <div style="background:#050505;padding:26px 22px;">
+                <div style="font-weight:700;font-size:clamp(24px,2.6vw,36px);color:#fff;">{{ stat.display }}</div>
+                <div style="margin-top:8px;font-size:12px;letter-spacing:0.04em;text-transform:uppercase;color:rgba(255,255,255,0.5);">{{ stat.label }}</div>
+              </div>
+            </sc-for>
+          </div>
+          <div style="margin-top:16px;font-size:13px;line-height:1.6;color:rgba(255,255,255,0.55);">Listeners in the U.S., Germany, France, Belgium, the U.K. and more.</div>
+          <div style="margin-top:48px;font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:4px;color:#ec3013;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:10px;">Why Invest</div>
+          <div style="margin-top:20px;display:flex;flex-direction:column;gap:12px;">
+            <sc-for list="{{ dashWhyInvest }}" as="pt" hint-placeholder-count="4">
+              <div style="display:flex;gap:12px;align-items:flex-start;font-size:14px;line-height:1.5;color:rgba(255,255,255,0.75);">
+                <span style="color:#ec3013;flex-shrink:0;">&#10003;</span><span>{{ pt.text }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isDashStreaming }}" hint-placeholder-val="{{ false }}">
+          <div style="margin-top:40px;font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:4px;color:#ec3013;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:10px;">Verified Plays / Views</div>
+          <div style="margin-top:20px;display:flex;flex-direction:column;gap:2px;max-width:480px;">
+            <sc-for list="{{ dashVerifiedRows }}" as="row" hint-placeholder-count="2">
+              <div style="display:flex;justify-content:space-between;font-size:14px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.08);color:rgba(255,255,255,0.75);">
+                <span>{{ row.platform }}</span><span style="color:#fff;font-weight:700;">{{ row.value }}</span>
+              </div>
+            </sc-for>
+            <div style="display:flex;justify-content:space-between;font-size:14px;padding:12px 0 0;color:#fff;font-weight:700;">
+              <span>Total Verified</span><span style="color:#ec3013;">708,876+</span>
+            </div>
+          </div>
+          <div style="display:flex;gap:48px;flex-wrap:wrap;margin-top:40px;">
+            <div style="flex:1;min-width:260px;">
+              <div style="font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:4px;color:#ec3013;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:10px;">Top Songs &mdash; Streaming</div>
+              <div style="margin-top:20px;display:flex;flex-direction:column;gap:14px;">
+                <sc-for list="{{ dashTopStreaming }}" as="row" hint-placeholder-count="4">
+                  <div>
+                    <div style="display:flex;justify-content:space-between;font-size:13px;color:rgba(255,255,255,0.7);margin-bottom:6px;"><span>{{ row.rank }}. {{ row.title }}</span><span style="color:#fff;">{{ row.value }}</span></div>
+                    <div style="height:6px;background:rgba(255,255,255,0.08);"><div style="height:100%;background:#ec3013;width:{{ row.width }};transition:width 1s cubic-bezier(.16,.84,.44,1);"></div></div>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+            <div style="flex:1;min-width:260px;">
+              <div style="font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:4px;color:#ec3013;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:10px;">Top Songs &mdash; TikTok</div>
+              <div style="margin-top:20px;display:flex;flex-direction:column;gap:14px;">
+                <sc-for list="{{ dashTopTiktok }}" as="row" hint-placeholder-count="5">
+                  <div>
+                    <div style="display:flex;justify-content:space-between;font-size:13px;color:rgba(255,255,255,0.7);margin-bottom:6px;"><span>{{ row.title }}</span><span style="color:#fff;">{{ row.display }}</span></div>
+                    <div style="height:6px;background:rgba(255,255,255,0.08);"><div style="height:100%;background:#ec3013;width:{{ row.width }};transition:width 1s cubic-bezier(.16,.84,.44,1);"></div></div>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isDashAudience }}" hint-placeholder-val="{{ false }}">
+          <div style="margin-top:40px;display:flex;gap:64px;flex-wrap:wrap;">
+            <div>
+              <div style="font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:4px;color:#ec3013;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:10px;">Gender</div>
+              <div style="margin-top:20px;display:flex;gap:40px;">
+                <div><div style="font-weight:700;font-size:30px;color:#fff;">54%</div><div style="font-size:12px;color:rgba(255,255,255,0.5);text-transform:uppercase;">Male</div></div>
+                <div><div style="font-weight:700;font-size:30px;color:#fff;">43%</div><div style="font-size:12px;color:rgba(255,255,255,0.5);text-transform:uppercase;">Female</div></div>
+              </div>
+            </div>
+            <div style="flex:1;min-width:240px;">
+              <div style="font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:4px;color:#ec3013;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:10px;">Age Range</div>
+              <div style="margin-top:20px;display:flex;flex-direction:column;gap:12px;">
+                <sc-for list="{{ dashAgeBars }}" as="row" hint-placeholder-count="3">
+                  <div style="display:flex;align-items:center;gap:16px;">
+                    <div style="width:70px;flex-shrink:0;font-size:13px;color:rgba(255,255,255,0.65);">{{ row.label }}</div>
+                    <div style="flex:1;height:8px;background:rgba(255,255,255,0.08);"><div style="height:100%;background:#ec3013;width:{{ row.width }};transition:width 1.1s cubic-bezier(.16,.84,.44,1);"></div></div>
+                    <div style="width:44px;text-align:right;font-size:13px;color:#fff;">{{ row.value }}</div>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+          </div>
+          <div style="margin-top:48px;">
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:4px;color:#ec3013;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:10px;">Top Cities &mdash; YouTube</div>
+            <div style="margin-top:20px;display:flex;flex-direction:column;gap:12px;max-width:520px;">
+              <sc-for list="{{ dashCityBars }}" as="row" hint-placeholder-count="5">
+                <div style="display:flex;align-items:center;gap:16px;">
+                  <div style="width:140px;flex-shrink:0;font-size:13px;color:rgba(255,255,255,0.65);">{{ row.label }}</div>
+                  <div style="flex:1;height:8px;background:rgba(255,255,255,0.08);"><div style="height:100%;background:#ec3013;width:{{ row.width }};transition:width 1.1s cubic-bezier(.16,.84,.44,1);"></div></div>
+                  <div style="width:60px;text-align:right;font-size:13px;color:#fff;">{{ row.value }}</div>
+                </div>
+              </sc-for>
+            </div>
+            <div style="margin-top:16px;font-size:12px;color:rgba(255,255,255,0.45);">Audience spans multiple major U.S. markets and beyond.</div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isDashEcosystem }}" hint-placeholder-val="{{ false }}">
+          <div style="margin-top:40px;font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:4px;color:#ec3013;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:10px;">The Brand Ecosystem</div>
+          <div style="margin-top:20px;display:flex;flex-direction:column;">
+            <sc-for list="{{ ecosystem }}" as="eco" hint-placeholder-count="4">
+              <div style="display:flex;flex-wrap:wrap;gap:24px;padding:16px 0;border-bottom:1px solid rgba(255,255,255,0.1);">
+                <div style="width:200px;flex-shrink:0;font-weight:700;font-size:13px;letter-spacing:0.06em;text-transform:uppercase;color:#fff;">{{ eco.label }}</div>
+                <div style="flex:1;min-width:220px;font-size:14px;line-height:1.5;color:rgba(255,255,255,0.65);">{{ eco.desc }}</div>
+              </div>
+            </sc-for>
+          </div>
+          <div style="margin-top:48px;font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:4px;color:#ec3013;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:10px;">Booking / Business Inquiries</div>
+          <div style="margin-top:20px;display:flex;flex-direction:column;gap:10px;font-size:14px;color:rgba(255,255,255,0.75);">
+            <a href="mailto:internationalangelo700@gmail.com">internationalangelo700@gmail.com</a>
+            <a href="https://instagram.com/internationalangelo" target="_blank" rel="noopener">@internationalangelo</a>
+            <a href="https://700records.com" target="_blank" rel="noopener">700Records.com</a>
+            <a href="https://born2winbrand.com" target="_blank" rel="noopener">Born2WinBrand.com</a>
+          </div>
+        </sc-if>
+        </sc-if>
+
+        <sc-if value="{{ isDashBamg }}" hint-placeholder-val="{{ false }}">
+          <div style="margin-top:8px;display:flex;gap:56px;flex-wrap:wrap;">
+            <div style="flex:1;min-width:300px;">
+              <div style="font-size:15px;line-height:1.6;color:rgba(255,255,255,0.75);max-width:440px;">{{ bamgDesc }}</div>
+              <div style="margin-top:40px;font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:4px;color:#ec3013;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:10px;">What We Do</div>
+              <div style="margin-top:20px;display:flex;flex-direction:column;gap:12px;">
+                <sc-for list="{{ bamgBullets }}" as="item" hint-placeholder-count="7">
+                  <div style="display:flex;gap:12px;align-items:flex-start;font-size:14px;line-height:1.5;color:rgba(255,255,255,0.8);">
+                    <span style="color:#ec3013;flex-shrink:0;">&#9733;</span><span>{{ item }}</span>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+            <div style="flex:1;min-width:280px;display:grid;grid-template-columns:1fr 1fr;gap:14px;align-content:start;">
+              <sc-for list="{{ bamgThumbs }}" as="thumb" hint-placeholder-count="4">
+                <sc-if value="{{ thumb.hasLink }}" hint-placeholder-val="{{ false }}">
+                  <a href="{{ thumb.href }}" target="_blank" rel="noopener" style="display:block;aspect-ratio:4/3;border:1px solid rgba(255,255,255,0.15);overflow:hidden;transition:border-color .2s;" style-hover="border-color:#ec3013;">
+                    <img src="{{ thumb.src }}" alt="{{ thumb.label }}" style="display:block;width:100%;height:100%;object-fit:cover;"/>
+                  </a>
+                </sc-if>
+                <sc-if value="{{ thumb.isInternal }}" hint-placeholder-val="{{ false }}">
+                  <a href="#" onClick="{{ thumb.onClick }}" style="display:block;aspect-ratio:4/3;border:1px solid rgba(255,255,255,0.15);overflow:hidden;transition:border-color .2s;cursor:pointer;" style-hover="border-color:#ec3013;">
+                    <img src="{{ thumb.src }}" alt="{{ thumb.label }}" style="display:block;width:100%;height:100%;object-fit:cover;"/>
+                  </a>
+                </sc-if>
+                <sc-if value="{{ thumb.plainImg }}" hint-placeholder-val="{{ false }}">
+                  <div style="aspect-ratio:4/3;border:1px solid rgba(255,255,255,0.15);overflow:hidden;">
+                    <img src="{{ thumb.src }}" alt="{{ thumb.label }}" style="display:block;width:100%;height:100%;object-fit:cover;"/>
+                  </div>
+                </sc-if>
+                <sc-if value="{{ thumb.noLink }}" hint-placeholder-val="{{ true }}">
+                  <image-slot id="{{ thumb.id }}" shape="rect" placeholder="{{ thumb.label }}" style="aspect-ratio:4/3;border:1px solid rgba(255,255,255,0.15);"></image-slot>
+                </sc-if>
+              </sc-for>
+            </div>
+          </div>
+          <div style="margin-top:48px;font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:4px;color:#ec3013;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:10px;">Booking / Business Inquiries</div>
+          <div style="margin-top:20px;display:flex;flex-direction:column;gap:10px;font-size:14px;color:rgba(255,255,255,0.75);">
+            <a href="mailto:internationalangelo700@gmail.com">internationalangelo700@gmail.com</a>
+            <a href="https://instagram.com/internationalangelo" target="_blank" rel="noopener">@internationalangelo</a>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ showGlobalNav }}" hint-placeholder-val="{{ false }}">
+    <sc-if value="{{ navOpen }}" hint-placeholder-val="{{ false }}">
+      <div onClick="{{ closeNav }}" style="position:fixed;inset:0;z-index:65;background:rgba(0,0,0,0.35);"></div>
+    </sc-if>
+    <button onClick="{{ toggleNav }}" style="position:absolute;right:40px;top:32px;z-index:70;width:44px;height:44px;background:transparent;border:none;display:flex;flex-direction:column;align-items:flex-end;justify-content:center;gap:5px;cursor:pointer;opacity:0.7;transition:opacity .2s;" style-hover="opacity:1;">
+      <span style="{{ burgerLine1 }}"></span>
+      <span style="{{ burgerLine2 }}"></span>
+      <span style="{{ burgerLine3 }}"></span>
+    </button>
+    <sc-if value="{{ navOpen }}" hint-placeholder-val="{{ false }}">
+      <div style="position:absolute;right:40px;top:84px;z-index:68;background:#0a0a0a;border:1px solid rgba(255,255,255,0.12);padding:26px 30px;display:flex;flex-direction:column;gap:14px;min-width:180px;">
+        <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="4">
+          <a href="#" onClick="{{ item.onClick }}" style="{{ item.style }}" style-hover="color:#ec3013;">{{ item.label }}</a>
+        </sc-for>
+        <div style="width:100%;height:1px;background:rgba(255,255,255,0.12);margin:6px 0;"></div>
+        <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap;">
+          <a href="https://www.youtube.com/@internationalangelo" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;width:26px;height:26px;opacity:0.45;transition:opacity .2s;" style-hover="opacity:1;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"></path><path d="m10 15 5-3-5-3z"></path></svg>
+          </a>
+          <a href="https://open.spotify.com/artist/76y0b9qiy5XCGzQxfn42lZ" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;width:26px;height:26px;opacity:0.45;transition:opacity .2s;" style-hover="opacity:1;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="#fff"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424a.622.622 0 01-.857.207c-2.348-1.435-5.304-1.76-8.785-.964a.622.622 0 11-.277-1.213c3.809-.87 7.076-.496 9.712 1.113a.622.622 0 01.207.857zm1.224-2.719a.78.78 0 01-1.072.257c-2.687-1.652-6.785-2.131-9.965-1.166a.78.78 0 01-.973-.517.78.78 0 01.517-.972c3.632-1.102 8.147-.568 11.236 1.327a.78.78 0 01.257 1.071zm.105-2.835C14.692 8.95 9.375 8.775 6.297 9.71a.934.934 0 11-.542-1.79c3.533-1.072 9.404-.865 13.115 1.338a.934.934 0 01-.955 1.613z"></path></svg>
+          </a>
+          <a href="https://music.apple.com/us/artist/international-angelo/1451294501" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;width:26px;height:26px;opacity:0.45;transition:opacity .2s;" style-hover="opacity:1;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="#fff"><path d="M23.994 6.124a9.23 9.23 0 00-.24-2.19c-.317-1.31-1.062-2.31-2.18-3.043A5.022 5.022 0 0019.63.165a10.18 10.18 0 00-1.988-.127C17.092.014 16.543 0 14.143 0h-4.29c-2.4 0-2.948.014-3.498.038a10.18 10.18 0 00-1.988.127A5.024 5.024 0 002.42.891C1.3 1.625.557 2.624.24 3.934A9.23 9.23 0 000 6.124C.014 6.674 0 7.224 0 9.624v4.752c0 2.4.014 2.95.038 3.5a9.23 9.23 0 00.24 2.19c.317 1.31 1.062 2.31 2.18 3.043a5.024 5.024 0 001.947.726c.656.122 1.32.164 1.988.127.55.024 1.1.038 3.5.038h4.29c2.4 0 2.948-.014 3.498-.038a10.18 10.18 0 001.988-.127 5.022 5.022 0 001.947-.726c1.118-.733 1.863-1.733 2.18-3.043a9.23 9.23 0 00.24-2.19c.024-.55.038-1.1.038-3.5V9.624c-.002-2.4-.016-2.95-.04-3.5zm-6.736 3.12v7.632a3.56 3.56 0 01-.062.72 1.846 1.846 0 01-1.08 1.35c-.498.222-1.02.308-1.56.3a2.413 2.413 0 01-.54-.06 1.59 1.59 0 01-1.14-1.14 1.594 1.594 0 01.36-1.5c.33-.36.75-.576 1.23-.66.36-.066.72-.12 1.08-.192a.65.65 0 00.54-.66V9.724a.353.353 0 00-.09-.27.36.36 0 00-.27-.09l-4.5.87a.367.367 0 00-.3.36v8.58a5.07 5.07 0 01-.042.6 1.87 1.87 0 01-1.08 1.47c-.48.216-.99.3-1.518.3a2.48 2.48 0 01-.6-.072 1.59 1.59 0 01-1.098-1.14 1.588 1.588 0 01.36-1.5c.33-.36.748-.578 1.228-.66.36-.066.72-.12 1.08-.192a.65.65 0 00.54-.66V7.444c0-.258.09-.48.27-.66a.86.86 0 01.48-.24l5.4-1.08c.18-.036.33-.018.45.054a.33.33 0 01.15.3l.006 3.426z"></path></svg>
+          </a>
+          <a href="https://music.youtube.com/channel/UCZ2zhZ26htep9mX5DoYENRQ" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;width:26px;height:26px;opacity:0.45;transition:opacity .2s;" style-hover="opacity:1;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="10,8 16,12 10,16" fill="#fff" stroke="none"></polygon></svg>
+          </a>
+          <a href="https://www.instagram.com/internationalangelo" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;width:26px;height:26px;opacity:0.45;transition:opacity .2s;" style-hover="opacity:1;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          </a>
+          <a href="https://born2win.store" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;width:26px;height:26px;opacity:0.45;transition:opacity .2s;" style-hover="opacity:1;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2 l-6 6 4 4 2-2 v12 h8 v-12 l2 2 4-4 -6-6 -2 2a4 4 0 0 1-4 0l-2-2z"></path></svg>
+          </a>
+        </div>
+        <a href="https://www.getclarity.consulting" target="_blank" rel="noopener" style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.6px;text-transform:uppercase;color:rgba(255,255,255,0.62);transition:color .2s;margin-top:4px;line-height:1.5;white-space:nowrap;" style-hover="color:#ec3013;">Site made by Alanne International</a>
+      </div>
+    </sc-if>
+  </sc-if>
+
+  <sc-if value="{{ promoOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closePromo }}" style="position:absolute;inset:0;z-index:200;background:rgba(0,0,0,0.86);display:flex;align-items:center;justify-content:center;padding:5vh 5vw;">
+      <div onClick="{{ stopPromoClick }}" style="position:relative;width:min(78vh,520px);animation:popIn .35s ease both;">
+        <a href="https://themodelexperience.com/collections/nyfwf-2025-tickets" target="_blank" rel="noopener" style="display:block;">
+          <img src="uploads/fashionweek.png" alt="NY Fashion Week Festival — September 12th, New York" style="display:block;width:100%;height:auto;border:1px solid rgba(255,255,255,0.14);" />
+        </a>
+        <button onClick="{{ closePromo }}" aria-label="Close" style="position:absolute;top:-14px;right:-14px;width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,0.25);background:#0a0a0a;color:#fff;font-size:18px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;" style-hover="background:#ec3013;border-color:#ec3013;">&#215;</button>
+      </div>
+    </div>
+  </sc-if>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;$preview&quot;: {&quot;width&quot;: 1440, &quot;height&quot;: 900},
+  &quot;navPosition&quot;: {&quot;editor&quot;: &quot;enum&quot;, &quot;default&quot;: &quot;top-left&quot;, &quot;options&quot;: [&quot;top-left&quot;, &quot;bottom-left&quot;], &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Navigation&quot;},
+  &quot;soundDefaultOn&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Music page&quot;},
+  &quot;carouselAutoAdvance&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: false, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Carousels&quot;}
+}">
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = {
+      view: 'home',
+      musicMuted: !((props && props.soundDefaultOn) ?? true),
+      musicSlot: 0,
+      cultureSlot: 0,
+      aboutVals: {},
+      barsGrown: false,
+      navOpen: false,
+      dashboardOpen: false,
+      dashboardKind: 'records',
+      dashboardTab: 'overview',
+      dashVals: {},
+      dashBarsGrown: false,
+    };
+    this.homePlayer = null;
+    this.musicPlayer = null;
+    this._homeLoopTimer = null;
+    this._musicLoopTimer = null;
+    this._advanceTimer = null;
+    this._aboutAnimated = false;
+    this._homeClipIdx = 0;
+    this.state.barRect = { left: 0, width: 80, top: 0 };
+    this._lastView = 'home';
+    this._lastMusicSlot = 0;
+    this._lastMusicMuted = this.state.musicMuted;
+    this.homeWrapRef = React.createRef();
+    this.dividerMarkerRef = React.createRef();
+    this.linkRefs = {};
+  }
+
+  componentDidMount() {
+    this._promoTimer = setTimeout(() => {
+      if (this.state.view === 'home' && !this.state.promoDismissed) this.setState({ promoOpen: true });
+    }, 1600);
+    this.ensureYtApi();
+    if (this.props.carouselAutoAdvance) this.startAutoAdvance();
+    setTimeout(() => this.resetBarToDefault(), 6700);
+    this._domObserver = new MutationObserver(() => {
+      if (this.state.view === 'home' && !this.homePlayer) this.initHomePlayer();
+      if (this.state.view === 'music' && !this.musicPlayer) this.initMusicPlayer();
+      if (this.state.view === 'culture' && !this.culturePlayer) this.initCulturePlayer();
+    });
+    this._domObserver.observe(document.body, { childList: true, subtree: true });
+  }
+
+  measureRect(el) {
+    if (!el || !this.homeWrapRef.current) return null;
+    const wrap = this.homeWrapRef.current.getBoundingClientRect();
+    const r = el.getBoundingClientRect();
+    return { left: Math.round(r.left - wrap.left), width: Math.round(r.width), top: Math.round(r.bottom - wrap.top + 6) };
+  }
+
+  resetBarToDefault = () => {
+    const r = this.measureRect(this.dividerMarkerRef.current);
+    if (r) this.setState({ barRect: r });
+  };
+
+  setLinkRef(key) { return (el) => { this.linkRefs[key] = el; }; }
+  onLinkEnter(key) {
+    return () => {
+      const el = this.linkRefs[key];
+      if (!el || !this.homeWrapRef.current) return;
+      const wrap = this.homeWrapRef.current.getBoundingClientRect();
+      const r = el.getBoundingClientRect();
+      this.setState((s) => ({ barRect: { left: Math.round(r.left - wrap.left), width: Math.round(r.width), top: s.barRect ? s.barRect.top : 0 } }));
+    };
+  }
+  onLinkLeave = () => this.resetBarToDefault();
+
+  componentDidUpdate(prevProps, prevState) {
+    const lastView = this._lastView;
+    const lastSlot = this._lastMusicSlot;
+    const lastMuted = this._lastMusicMuted;
+    this._lastView = this.state.view;
+    this._lastMusicSlot = this.state.musicSlot;
+    this._lastMusicMuted = this.state.musicMuted;
+    if (lastView !== 'home' && this.state.view === 'home') {
+      this.initHomePlayer();
+      setTimeout(() => this.resetBarToDefault(), 6700);
+    }
+    if (lastView === 'home' && this.state.view !== 'home') {
+      this.homePlayer = null;
+      clearInterval(this._homeLoopTimer);
+    }
+    if (lastView !== 'music' && this.state.view === 'music') {
+      this.initMusicPlayer();
+    }
+    if (lastView !== 'culture' && this.state.view === 'culture') {
+      this.initCulturePlayer();
+    }
+    if (lastView === 'culture' && this.state.view !== 'culture') {
+      if (this.culturePlayer && this.culturePlayer.destroy) { try { this.culturePlayer.destroy(); } catch (e) {} }
+      this.culturePlayer = null;
+      clearInterval(this._cultureLoopTimer);
+    }
+    if (this.state.view === 'music' && lastSlot !== undefined && lastSlot !== this.state.musicSlot) {
+      this.loadClipForSlot(this.state.musicSlot);
+    }
+    if (lastView === 'music' && this.state.view !== 'music') {
+      if (this.musicPlayer && this.musicPlayer.destroy) { try { this.musicPlayer.destroy(); } catch (e) {} }
+      this.musicPlayer = null;
+      clearInterval(this._musicLoopTimer);
+    }
+    if (lastMuted !== undefined && lastMuted !== this.state.musicMuted) this.applyMusicMute();
+  }
+
+  componentWillUnmount() {
+    clearInterval(this._homeLoopTimer);
+    clearInterval(this._musicLoopTimer);
+    clearInterval(this._cultureLoopTimer);
+    clearInterval(this._advanceTimer);
+    clearInterval(this._dashTimer);
+    if (this._domObserver) this._domObserver.disconnect();
+  }
+
+  ensureYtApi() {
+    const tryInit = () => { this.initHomePlayer(); this.initMusicPlayer(); this.initCulturePlayer(); };
+    if (window.YT && window.YT.Player) { tryInit(); return; }
+    const prev = window.onYouTubeIframeAPIReady;
+    window.onYouTubeIframeAPIReady = () => { if (prev) prev(); tryInit(); };
+  }
+
+  initHomePlayer(attempt) {
+    attempt = attempt || 0;
+    const host = document.getElementById('ia-yt-home');
+    if ((!host || !window.YT || !window.YT.Player) && attempt < 20) {
+      setTimeout(() => this.initHomePlayer(attempt + 1), 150);
+      return;
+    }
+    if (!host || !window.YT || !window.YT.Player) return;
+    if (host.querySelector('iframe')) return;
+    this.homePlayer = null;
+    this._homeClipIdx = 0;
+    const clips = [[4, 36], [40, 72], [76, 108], [112, 132]];
+    this.homePlayer = new window.YT.Player(host, {
+      videoId: 'Sws0OYU_Czw',
+      playerVars: { autoplay: 1, mute: 1, controls: 0, showinfo: 0, rel: 0, modestbranding: 1, iv_load_policy: 3, cc_load_policy: 0, disablekb: 1, fs: 0, start: clips[0][0], playsinline: 1 },
+      events: {
+        onReady: (e) => {
+          e.target.seekTo(clips[0][0]);
+          e.target.playVideo();
+          clearInterval(this._homeLoopTimer);
+          this._homeLoopTimer = setInterval(() => {
+            if (!this.homePlayer || !this.homePlayer.getCurrentTime) return;
+            const t = this.homePlayer.getCurrentTime();
+            if (t >= clips[this._homeClipIdx][1]) {
+              this._homeClipIdx = (this._homeClipIdx + 1) % clips.length;
+              this.homePlayer.seekTo(clips[this._homeClipIdx][0], true);
+            }
+          }, 500);
+        },
+        onStateChange: (e) => {
+          if (window.YT && e.data === window.YT.PlayerState.ENDED) {
+            this._homeClipIdx = 0;
+            this.homePlayer.seekTo(clips[0][0], true);
+            this.homePlayer.playVideo();
+          }
+        },
+      },
+    });
+  }
+
+  initCulturePlayer(attempt) {
+    attempt = attempt || 0;
+    const host = document.getElementById('ia-yt-culture');
+    if ((!host || !window.YT || !window.YT.Player) && attempt < 20) {
+      setTimeout(() => this.initCulturePlayer(attempt + 1), 150);
+      return;
+    }
+    if (!host || !window.YT || !window.YT.Player) return;
+    if (host.querySelector('iframe')) return;
+    this.culturePlayer = new window.YT.Player(host, {
+      videoId: 'gGfnVUMg7x8',
+      playerVars: { autoplay: 1, mute: 1, controls: 0, rel: 0, modestbranding: 1, iv_load_policy: 3, cc_load_policy: 0, disablekb: 1, fs: 0, start: 0, playsinline: 1 },
+      events: {
+        onReady: (e) => {
+          e.target.mute();
+          e.target.playVideo();
+          clearInterval(this._cultureLoopTimer);
+          this._cultureLoopTimer = setInterval(() => {
+            const p = this.culturePlayer;
+            if (!p || !p.getCurrentTime) return;
+            if (p.getCurrentTime() >= 24) p.seekTo(0, true);
+          }, 400);
+        },
+        onStateChange: (e) => {
+          if (window.YT && e.data === window.YT.PlayerState.ENDED) {
+            this.culturePlayer.seekTo(0, true);
+            this.culturePlayer.playVideo();
+          }
+        },
+      },
+    });
+  }
+
+  getMusicClip(slot) {
+    const clips = {
+      0: { videoId: 'YWV4r7o0KOM', start: 68, end: 95 },
+      1: { videoId: 'g7gTNt45EdQ', start: 0, end: 61 },
+      2: { videoId: 'BKrShx3Hmek', start: 42, end: 81 },
+      3: { videoId: 'EVd2raZBdTA', start: 0, end: 34 },
+      4: { videoId: 'paoBHDGpY3s', start: 47, end: 89 },
+      5: { videoId: 'P55ZcLA6Bg4', start: 0, end: 97 },
+    };
+    return clips[slot] || null;
+  }
+
+  initMusicPlayer(attempt) {
+    attempt = attempt || 0;
+    const host = document.getElementById('ia-yt-music');
+    if ((!host || !window.YT || !window.YT.Player) && attempt < 20) {
+      setTimeout(() => this.initMusicPlayer(attempt + 1), 150);
+      return;
+    }
+    if (!host || !window.YT || !window.YT.Player) return;
+    if (host.tagName === 'IFRAME' || host.querySelector('iframe')) return;
+    if (this.musicPlayer) return;
+    this._musicPlayerCreating = true;
+    const clip = this.getMusicClip(this.state.musicSlot) || this.getMusicClip(0);
+    this._musicClip = clip;
+    this.musicPlayer = new window.YT.Player(host, {
+      videoId: clip.videoId,
+      playerVars: { autoplay: 1, mute: this.state.musicMuted ? 1 : 0, controls: 0, start: clip.start, rel: 0, modestbranding: 1, iv_load_policy: 3, cc_load_policy: 0, disablekb: 1, playsinline: 1, fs: 0 },
+      events: {
+        onReady: (e) => { e.target.playVideo(); this.applyMusicMute(); this.startMusicLoopWatcher(); },
+        onStateChange: (e) => {
+          if (window.YT && e.data === window.YT.PlayerState.ENDED && this._musicClip) {
+            this.musicPlayer.seekTo(this._musicClip.start, true);
+            this.musicPlayer.playVideo();
+          }
+        },
+      },
+    });
+  }
+
+  loadClipForSlot(slot) {
+    if (!this.musicPlayer) return;
+    const clip = this.getMusicClip(slot);
+    if (!clip) { if (this.musicPlayer.stopVideo) this.musicPlayer.stopVideo(); return; }
+    this._musicClip = clip;
+    if (this.musicPlayer.loadVideoById) {
+      if (this.musicPlayer.stopVideo) this.musicPlayer.stopVideo();
+      this.musicPlayer.loadVideoById({ videoId: clip.videoId, startSeconds: clip.start });
+      if (this.state.musicMuted) this.musicPlayer.mute();
+      this.startMusicLoopWatcher();
+    }
+  }
+
+  startMusicLoopWatcher() {
+    clearInterval(this._musicLoopTimer);
+    this._musicLoopTimer = setInterval(() => {
+      if (!this.musicPlayer || !this.musicPlayer.getCurrentTime || !this._musicClip) return;
+      const t = this.musicPlayer.getCurrentTime();
+      const { start, end } = this._musicClip;
+      if (t >= end || t < start - 1) this.musicPlayer.seekTo(start, true);
+    }, 400);
+  }
+
+  applyMusicMute() {
+    if (!this.musicPlayer || !this.musicPlayer.mute) return;
+    if (this.state.musicMuted) this.musicPlayer.mute();
+    else this.musicPlayer.unMute();
+  }
+
+  startAutoAdvance() {
+    clearInterval(this._advanceTimer);
+    this._advanceTimer = setInterval(() => {
+      if (this.state.view === 'music') this.nextMusicSlot();
+      else if (this.state.view === 'culture') this.nextCultureSlot();
+    }, 5000);
+  }
+
+  navigate = (view) => {
+    if (view === 'about') {
+      this._aboutAnimated = false;
+      this.setState({ view, aboutVals: {}, barsGrown: false, navOpen: false }, () => this.startAboutAnimation());
+    } else {
+      this.setState({ view, navOpen: false });
+    }
+  };
+
+  toggleNav = () => this.setState((s) => ({ navOpen: !s.navOpen }));
+  closeNav = () => this.setState({ navOpen: false });
+
+  startAboutAnimation() {
+    if (this._aboutAnimated) return;
+    this._aboutAnimated = true;
+    const targets = { streams: 708876, tiktokViews: 8300000, ugc: 4400, ytViews: 100000, spotifyListeners: 50000 };
+    const start = performance.now();
+    const dur = 1400;
+    const tick = (t) => {
+      const p = Math.min(1, (t - start) / dur);
+      const eased = 1 - Math.pow(1 - p, 3);
+      const vals = {};
+      Object.keys(targets).forEach((k) => { vals[k] = targets[k] * eased; });
+      this.setState({ aboutVals: vals });
+      if (p < 1) requestAnimationFrame(tick);
+      else setTimeout(() => this.setState({ barsGrown: true }), 150);
+    };
+    requestAnimationFrame(tick);
+  }
+
+  openDashboard(kind) {
+    return (e) => {
+      if (e && e.preventDefault) e.preventDefault();
+      this._dashAnimated = false;
+      this.setState({ dashboardOpen: true, dashboardKind: kind, dashboardTab: 'overview', dashVals: {}, dashBarsGrown: false, navOpen: false }, () => {
+        if (kind === 'records') this.startDashboardAnimation();
+      });
+    };
+  }
+  closeDashboard = () => this.setState({ dashboardOpen: false });
+  setDashboardTab(tab) { return () => this.setState({ dashboardTab: tab }); }
+
+  startDashboardAnimation() {
+    if (this._dashAnimated) return;
+    this._dashAnimated = true;
+    const targets = { plays: 708876, tiktokViews: 8300000, videos: 4400 };
+    const start = Date.now();
+    const dur = 1400;
+    clearInterval(this._dashTimer);
+    this._dashTimer = setInterval(() => {
+      const p = Math.min(1, (Date.now() - start) / dur);
+      const eased = 1 - Math.pow(1 - p, 3);
+      const vals = {};
+      Object.keys(targets).forEach((k) => { vals[k] = targets[k] * eased; });
+      this.setState({ dashVals: vals });
+      if (p >= 1) {
+        clearInterval(this._dashTimer);
+        setTimeout(() => this.setState({ dashBarsGrown: true }), 150);
+      }
+    }, 30);
+  }
+
+  toggleHomeSound = () => {
+    this.setState((s) => ({ homeMuted: !s.homeMuted }), () => {
+      const p = this.homePlayer;
+      if (!p || !p.mute) return;
+      if (this.state.homeMuted) p.mute(); else { p.unMute(); if (p.setVolume) p.setVolume(70); }
+    });
+  };
+
+  toggleSound = () => {
+    this.setState((s) => ({ musicMuted: !s.musicMuted }), () => this.applyMusicMute());
+  };
+
+  prevMusicSlot = () => this.setState((s) => ({ musicSlot: (s.musicSlot + 5) % 6 }));
+  nextMusicSlot = () => this.setState((s) => ({ musicSlot: (s.musicSlot + 1) % 6 }));
+  cultureCount = () => 9;
+  prevCultureSlot = () => this.setState((s) => { const n = this.cultureCount(); return { cultureSlot: (s.cultureSlot + n - 1) % n }; });
+  nextCultureSlot = () => this.setState((s) => { const n = this.cultureCount(); return { cultureSlot: (s.cultureSlot + 1) % n }; });
+  goToMusicSlot = (i) => this.setState({ musicSlot: i });
+  goToCultureSlot = (i) => this.setState({ cultureSlot: i });
+
+  goCultureClip = (e) => {
+    if (e && e.preventDefault) e.preventDefault();
+    this.setState({ dashboardOpen: false, view: 'culture', cultureSlot: 1 });
+  };
+
+  closePromo = () => this.setState({ promoOpen: false, promoDismissed: true });
+  stopPromoClick = (e) => { if (e && e.stopPropagation) e.stopPropagation(); };
+
+  cultureMovRef = (el) => {
+    this._movEl = el;
+    if (!el) return;
+    if (!el._movBound) {
+      el._movBound = true;
+      const kick = () => {
+        if (el.readyState < 1) return;
+        if (el.seekable && el.seekable.length && el.seekable.end(0) > 7 && el.currentTime < 6.9) {
+          try { el.currentTime = 7; } catch (e) {}
+        }
+        const p = el.play();
+        if (p && p.catch) p.catch(() => {});
+      };
+      el.addEventListener('loadedmetadata', kick);
+      el.addEventListener('canplay', kick);
+      el.addEventListener('progress', () => { if (el.paused) kick(); });
+      kick();
+    }
+  };
+  onMovTime = () => {
+    const el = this._movEl;
+    if (!el) return;
+    const canSeek = el.seekable && el.seekable.length && el.seekable.end(0) > 7;
+    if (!canSeek) return;
+    if (el.currentTime >= 29 || el.currentTime < 6.8) { try { el.currentTime = 7; } catch (e) {} }
+  };
+  onMovError = () => {};
+
+  renderVals() {
+    const { view, musicMuted, musicSlot, cultureSlot, aboutVals, barsGrown, navOpen, dashboardOpen, dashboardKind, dashboardTab, dashVals, dashBarsGrown } = this.state;
+    const isHome = view === 'home';
+    const isMusic = view === 'music';
+    const isMedia = view === 'media';
+    const isCulture = view === 'culture';
+    const isAbout = view === 'about';
+    const showGlobalNav = true;
+
+    const navPos = this.props.navPosition || 'top-left';
+    const navContainerStyle = (navPos === 'bottom-left'
+      ? 'position:absolute;left:40px;bottom:32px;'
+      : 'position:absolute;left:40px;top:32px;'
+    ) + 'z-index:60;display:flex;flex-wrap:wrap;gap:22px;align-items:center;background:rgba(0,0,0,0.5);padding:10px 16px;';
+
+    const allLinks = [
+      { key: 'home', label: 'Home', go: () => this.navigate('home') },
+      { key: 'music', label: 'Music', go: () => this.navigate('music') },
+      { key: 'media', label: 'Media', go: () => this.navigate('media') },
+      { key: 'culture', label: 'Culture', go: () => this.navigate('culture') },
+      { key: 'about', label: 'About', go: () => this.navigate('about') },
+    ];
+    const navItems = allLinks.filter((l) => l.key !== view).map((l) => ({
+      label: l.label.toUpperCase(),
+      onClick: l.go,
+      style: 'display:block;color:rgba(255,255,255,0.8);font-weight:700;font-size:13px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;padding:4px 0;',
+    }));
+    const homeMainLinks = allLinks.filter((l) => ['music', 'media', 'culture'].includes(l.key)).map((l) => ({
+      label: l.label.toUpperCase(), onClick: l.go,
+      setRef: this.setLinkRef(l.key), onEnter: this.onLinkEnter(l.key), onLeave: this.onLinkLeave,
+    }));
+    const aboutLinkDef = allLinks.find((l) => l.key === 'about');
+    const homeAboutLink = { label: aboutLinkDef.label.toUpperCase(), onClick: aboutLinkDef.go };
+    const br = this.state.barRect || { left: 0, width: 80, top: 0 };
+    const homeBarStyle = 'position:absolute;left:' + br.left + 'px;top:' + br.top + 'px;width:' + br.width + 'px;height:3px;background:#ec3013;transition:left .35s ease,width .35s ease,top .35s ease;animation:fadeInUp 0.8s ease-out 2.3s both;pointer-events:none;';
+
+    const musicUnmuted = !musicMuted;
+
+    const musicVideoBgStyle = 'position:absolute;inset:0;opacity:1;transition:opacity .5s ease;pointer-events:none;';
+    const musicBgSlots = [];
+
+    const songsData = [
+      { title: "I'mma Simple Man", links: [{ href: 'https://open.spotify.com/track/4n73MgtfAnfBI10jBEg8Ls?si=6c3aa11d5bf9431f', isSpotify: true }, { href: 'https://www.youtube.com/watch?v=YWV4r7o0KOM', isYoutube: true }], artSrc: 'assets/imma-simple-man.png' },
+      { title: 'A Lul', links: [{ href: 'https://music.apple.com/ng/song/a-lul/1527474116', isApple: true }, { href: 'https://www.youtube.com/@imatrapaholic', isYoutube: true }], artSrc: 'assets/a-lul-cover.webp' },
+      { title: '700 Anthem', links: [{ href: 'https://music.apple.com/us/album/700-anthem/1827634039?i=1827634040', isApple: true }, { href: 'https://www.youtube.com/watch?v=BKrShx3Hmek', isYoutube: true }], artSrc: 'assets/700-anthem.png' },
+      { title: 'Off Center', links: [{ href: 'https://music.apple.com/us/album/off-center/1845582477?i=1845582479', isApple: true }, { href: 'https://www.youtube.com/watch?v=EVd2raZBdTA', isYoutube: true }], artSrc: 'assets/off-center.png' },
+      { title: 'Morticated', links: [], artSrc: '', noArt: true },
+      { title: 'Million Dolla Mind', links: [{ href: 'https://www.youtube.com/watch?v=P55ZcLA6Bg4', isYoutube: true }, { href: 'https://www.youtube.com/@prod2s_', isYoutube: true }], artSrc: 'assets/imma-simple-man.png' },
+    ];
+    const songRaw = songsData[musicSlot] || songsData[0];
+    const currentSong = Object.assign({ artId: 'music-slot-art-' + musicSlot, hasArt: !songRaw.noArt }, songRaw);
+
+    const dotStyle = (active) => 'width:8px;height:8px;border-radius:50%;border:none;padding:0;cursor:pointer;background:' + (active ? '#ec3013' : 'rgba(255,255,255,0.3)') + ';opacity:0.8;';
+    const musicDots = [0, 1, 2, 3, 4, 5].map((i) => ({ onClick: () => this.goToMusicSlot(i), style: dotStyle(i === musicSlot) }));
+    const cultureDots = [0, 1, 2, 3, 4, 5, 6, 7, 8].map((i) => ({ onClick: () => this.goToCultureSlot(i), style: dotStyle(i === cultureSlot) }));
+
+    const burgerBase = 'display:block;width:100%;height:2px;background:#fff;transition:transform .25s ease,opacity .2s ease;';
+    const burgerLine1 = burgerBase + (navOpen ? 'transform:translateY(7px) rotate(45deg);' : '');
+    const burgerLine2 = burgerBase + (navOpen ? 'opacity:0;' : '');
+    const burgerLine3 = burgerBase + (navOpen ? 'transform:translateY(-7px) rotate(-45deg);' : '');
+
+    const cultureLabels = ['Show Flyer', 'Fan Meetup', 'Merch Drop'];
+    const cultureSrcs = { 0: 'assets/culture-4.jpg', 1: 'assets/culture-3.jpg', 2: 'assets/culture-1.jpg' };
+    const cultureSlots = cultureLabels.map((lab, i0) => ({
+      id: 'culture-slot-' + i0,
+      placeholder: lab,
+      src: cultureSrcs[i0] || '',
+      style: 'position:absolute;inset:0;background-size:cover;background-position:center;opacity:' + (i0 + 2 === cultureSlot ? 1 : 0) + ';transition:opacity .5s ease;pointer-events:' + (i0 + 2 === cultureSlot ? 'auto' : 'none') + ';',
+    }));
+    const cultureVideoDefs = [
+      { index: 5, fileId: '1GKOtcD_0Aw24o34OxZepYidTMYVGC4hJ' },
+      { index: 6, fileId: '10b3OlXYOx0EwYF5n_Yvb5tYXhJLnjPwi' },
+    ];
+    const driveFrame = 'position:absolute;top:0;left:0;width:100%;height:100%;border:none;';
+    const ytFrame = 'position:absolute;top:50%;left:50%;width:100vw;height:56.25vw;min-width:177.78vh;min-height:100vh;transform:translate(-50%,-50%) scale(1.25);border:none;pointer-events:none;';
+    const cultureVideos = cultureVideoDefs.map((v) => ({
+      id: 'culture-video-' + v.index,
+      frameStyle: v.yt ? ytFrame : driveFrame,
+      src: v.yt
+        ? 'https://www.youtube.com/embed/' + v.yt + '?autoplay=1&mute=1&controls=0&loop=1&playlist=' + v.yt + '&start=' + v.start + '&end=' + v.end + '&modestbranding=1&playsinline=1&rel=0&iv_load_policy=3'
+        : 'https://drive.google.com/file/d/' + v.fileId + '/preview',
+      wrapStyle: 'position:absolute;inset:0;overflow:hidden;opacity:' + (cultureSlot === v.index ? 1 : 0) + ';transition:opacity .5s ease;pointer-events:' + (cultureSlot === v.index ? 'auto' : 'none') + ';',
+    }));
+
+    const bamgBullets = [
+      'Interviews & Artist Features', 'News & Culture Coverage', 'Event Recaps & Red Carpet',
+      '700 Seconds with International Angelo', 'Digital Marketing & Promotions',
+      'Social Media Content Creation', 'Documentaries & Visual Storytelling',
+    ];
+
+    const fmt = (key, format) => {
+      const cur = aboutVals[key] || 0;
+      if (format === 'M') return (cur / 1e6).toFixed(1) + 'M+';
+      if (format === 'K') return Math.round(cur / 1000) + 'K+';
+      return Math.round(cur).toLocaleString() + '+';
+    };
+    const aboutStatsDef = [
+      { key: 'streams', format: 'plus', label: 'Verified Lifetime Streams / Views', detail: 'DistroKid (all DSPs): 553,517 \u00b7 YouTube Artist Channel: 155,359' },
+      { key: 'tiktokViews', format: 'M', label: 'TikTok Views', detail: 'Views generated using official International Angelo music' },
+      { key: 'ugc', format: 'plus', label: 'User-Generated TikTok Creations', detail: "Fan-made videos built on his catalog" },
+      { key: 'ytViews', format: 'K', label: 'YouTube Views', detail: 'Artist channel lifetime views' },
+      { key: 'spotifyListeners', format: 'K', label: 'Monthly Spotify Listeners', detail: 'Active monthly listeners on Spotify' },
+    ];
+    const aboutStats = aboutStatsDef.map((s) => ({ ...s, display: fmt(s.key, s.format) }));
+
+    const platformData = [
+      { label: 'Spotify', target: 472000 }, { label: 'Apple Music', target: 128000 },
+      { label: 'YouTube', target: 88000 }, { label: 'SoundCloud', target: 13000 }, { label: 'Other', target: 7000 },
+    ];
+    const platformMax = 472000;
+    const platformBars = platformData.map((r) => ({
+      label: r.label,
+      width: (barsGrown ? (r.target / platformMax * 100) : 0) + '%',
+      value: r.target >= 1000 ? Math.round(r.target / 1000) + 'K' : String(r.target),
+    }));
+
+    const ageData = [{ label: '18\u201324', pct: 32 }, { label: '25\u201334', pct: 30 }, { label: '35\u201344', pct: 21 }];
+    const ageBars = ageData.map((r) => ({ label: r.label, width: (barsGrown ? r.pct : 0) + '%', value: r.pct + '%' }));
+
+    const cityData = [
+      { label: 'Oakland, CA', pct: 18.2 }, { label: 'Atlanta, GA', pct: 11.7 }, { label: 'Los Angeles, CA', pct: 9.8 },
+      { label: 'San Francisco, CA', pct: 6.4 }, { label: 'Houston, TX', pct: 4.9 },
+    ];
+    const cityMax = 18.2;
+    const cityBars = cityData.map((r) => ({ label: r.label, width: (barsGrown ? (r.pct / cityMax * 100) : 0) + '%', value: r.pct + '%' }));
+
+    const ecosystem = [
+      { label: '700 Records (Label)', desc: 'Independent label creating a platform for long-term ownership, artist development, and business growth.' },
+      { label: 'Born 2 Win (Apparel)', desc: 'Motivational lifestyle brand connecting with fans through streetwear, mindset, and culture.' },
+      { label: 'Music & Content', desc: 'Catalog of street anthems and real-life storytelling that connects across generations.' },
+      { label: 'Live & Culture', desc: 'SXSW appearances and a growing presence on stages, in communities, and internationally.' },
+    ];
+
+    const isDashRecords = dashboardKind === 'records';
+    const isDashBamg = dashboardKind === 'bamg';
+    const dashboardTitle = isDashRecords ? '700 Records' : 'Bay Area Media Group';
+    const dashboardSubtitle = isDashRecords ? 'East Oakland, CA' : 'Music \u00b7 Media \u00b7 Culture';
+    const bamgDesc = 'BayAreaMediaGroup is our media and content platform covering music, culture, business, community stories and more.';
+    const bamgThumbs = [
+      { id: 'bamg-thumb-1', label: '700 Seconds with International Angelo', src: 'assets/700-seconds.png', href: 'https://www.youtube.com/watch?v=LUzoYXS2K3E' },
+      { id: 'bamg-thumb-2', label: 'BET Weekend Coverage', src: 'assets/bet-weekend.png', onClick: this.goCultureClip },
+      { id: 'bamg-thumb-3', label: 'Artist Interviews', src: 'assets/artist-interviews.png' },
+      { id: 'bamg-thumb-4', label: 'Event Recaps', src: 'assets/event-recaps.png', href: 'https://www.youtube.com/watch?v=iavZcrzFc6Y' },
+    ].map((t) => Object.assign({}, t, { hasLink: !!t.href, isInternal: !t.href && !!t.onClick, plainImg: !t.href && !t.onClick && !!t.src, noLink: !t.href && !t.onClick && !t.src }));
+    const openDashboardRecords = this.openDashboard('records');
+    const openDashboardBamg = this.openDashboard('bamg');
+    const isDashOverview = dashboardTab === 'overview';
+    const isDashStreaming = dashboardTab === 'streaming';
+    const isDashAudience = dashboardTab === 'audience';
+    const isDashEcosystem = dashboardTab === 'ecosystem';
+    const tabDefs = [{ key: 'overview', label: 'Overview' }, { key: 'streaming', label: 'Streaming' }, { key: 'audience', label: 'Audience' }, { key: 'ecosystem', label: 'Ecosystem' }];
+    const dashboardTabs = tabDefs.map((t) => ({
+      label: t.label.toUpperCase(),
+      onClick: this.setDashboardTab(t.key),
+      style: 'background:transparent;border:none;padding:8px 4px;cursor:pointer;font-family:\'Bebas Neue\',sans-serif;font-size:15px;letter-spacing:2px;text-transform:uppercase;color:' + (dashboardTab === t.key ? '#ec3013' : 'rgba(255,255,255,0.55)') + ';border-bottom:2px solid ' + (dashboardTab === t.key ? '#ec3013' : 'transparent') + ';margin-bottom:-17px;transition:color .2s;',
+    }));
+    const dfmt = (key, format) => {
+      const cur = dashVals[key] || 0;
+      if (format === 'M') return (cur / 1e6).toFixed(1) + 'M+';
+      return Math.round(cur).toLocaleString() + '+';
+    };
+    const dashOverviewStatsDef = [
+      { key: 'plays', format: 'plus', label: 'Verified Lifetime Plays / Views' },
+      { key: 'tiktokViews', format: 'M', label: 'TikTok Views' },
+      { key: 'videos', format: 'plus', label: 'Videos Created (TikTok)' },
+    ];
+    const dashOverviewStats = dashOverviewStatsDef.map((s) => ({ label: s.label, display: dfmt(s.key, s.format) }));
+    const dashWhyInvest = [
+      { text: 'Proven catalog with 700K+ verified plays/views and millions of additional social impressions' },
+      { text: 'Strong, cross-generational audience with high engagement and save rate' },
+      { text: 'Entrepreneurial foundation with label, brand, and multiple revenue streams' },
+      { text: 'Global reach with room to scale through the right strategy and partnerships' },
+    ];
+    const dashVerifiedRows = [{ platform: 'DistroKid (All DSPs)', value: '553,517' }, { platform: 'YouTube Artist Channel', value: '155,359' }];
+    const dashTopStreamingData = [
+      { rank: 1, title: 'Las Vegas', value: 8124 }, { rank: 2, title: 'End of the Story (Kap G)', value: 4302 },
+      { rank: 3, title: 'Watta (G Mix)', value: 2907 }, { rank: 4, title: 'She Belongs To The Streets', value: 2900 },
+    ];
+    const streamMax = 8124;
+    const dashTopStreaming = dashTopStreamingData.map((r) => ({ rank: r.rank, title: r.title, value: r.value.toLocaleString(), width: (dashBarsGrown ? (r.value / streamMax * 100) : 0) + '%' }));
+    const dashTopTiktokData = [
+      { title: 'She Belongs To The Streets', value: 4200000, display: '4.2M' }, { title: 'Back Stabbers', value: 1500000, display: '1.5M' },
+      { title: 'Las Vegas', value: 994700, display: '994.7K' }, { title: 'Only One', value: 464300, display: '464.3K' }, { title: 'Watta (G Mix)', value: 327000, display: '327K' },
+    ];
+    const tiktokMax = 4200000;
+    const dashTopTiktok = dashTopTiktokData.map((r) => ({ title: r.title, display: r.display, width: (dashBarsGrown ? (r.value / tiktokMax * 100) : 0) + '%' }));
+    const dashAgeData = [{ label: '18\u201324', pct: 32 }, { label: '25\u201334', pct: 30 }, { label: '35\u201344', pct: 21 }];
+    const dashAgeBars = dashAgeData.map((r) => ({ label: r.label, width: (dashBarsGrown ? r.pct : 0) + '%', value: r.pct + '%' }));
+    const dashCityData = [
+      { label: 'Oakland, CA', count: 6145 }, { label: 'New York, NY', count: 2414 }, { label: 'San Francisco, CA', count: 2138 },
+      { label: 'Los Angeles, CA', count: 1861 }, { label: 'Atlanta, GA', count: 1511 },
+    ];
+    const dashCityMax = 6145;
+    const dashCityBars = dashCityData.map((r) => ({ label: r.label, width: (dashBarsGrown ? (r.count / dashCityMax * 100) : 0) + '%', value: r.count.toLocaleString() }));
+
+    return {
+      isHome, isMusic, isMedia, isCulture, isAbout, showGlobalNav, navOpen,
+      dashboardOpen, openDashboardRecords, openDashboardBamg, closeDashboard: this.closeDashboard,
+      isDashRecords, isDashBamg, dashboardTitle, dashboardSubtitle, bamgDesc, bamgThumbs,
+      isDashOverview, isDashStreaming, isDashAudience, isDashEcosystem, dashboardTabs,
+      dashOverviewStats, dashWhyInvest, dashVerifiedRows, dashTopStreaming, dashTopTiktok, dashAgeBars, dashCityBars,
+      navContainerStyle, navItems, homeMainLinks, homeAboutLink, homeBarStyle, homeWrapRef: this.homeWrapRef, dividerMarkerRef: this.dividerMarkerRef, musicMuted, musicUnmuted,
+      musicDots, cultureDots, cultureSlots, cultureVideos, currentSong, musicVideoBgStyle, musicBgSlots, bamgBullets, aboutStats, platformBars, ageBars, cityBars, ecosystem,
+      promoOpen: !!this.state.promoOpen && isHome, closePromo: this.closePromo, stopPromoClick: this.stopPromoClick,
+      isCultureSlot0: cultureSlot === 2, isCultureFlyer: cultureSlot === 0, isCultureShop: cultureSlot === 8,
+      cultureShopStyle: 'position:absolute;left:0;right:0;top:0;bottom:96px;display:block;opacity:' + (cultureSlot === 8 ? 1 : 0) + ';transition:opacity .5s ease;pointer-events:' + (cultureSlot === 8 ? 'auto' : 'none') + ';',
+      cultureYtWrapStyle: 'position:absolute;inset:0;overflow:hidden;opacity:' + (cultureSlot === 7 ? 1 : 0) + ';transition:opacity .5s ease;pointer-events:none;',
+      cultureFlyerStyle: 'position:absolute;left:0;right:0;top:0;bottom:96px;display:block;opacity:' + (cultureSlot === 0 ? 1 : 0) + ';transition:opacity .5s ease;pointer-events:' + (cultureSlot === 0 ? 'auto' : 'none') + ';',
+      cultureMovRef: this.cultureMovRef, onMovTime: this.onMovTime,
+      cultureMovStyle: 'position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000;opacity:' + (cultureSlot === 1 ? 1 : 0) + ';transition:opacity .5s ease;pointer-events:none;',
+      burgerLine1, burgerLine2, burgerLine3, toggleNav: this.toggleNav, closeNav: this.closeNav,
+      homeMuted: this.state.homeMuted !== false, homeUnmuted: this.state.homeMuted === false, toggleHomeSound: this.toggleHomeSound,
+      toggleSound: this.toggleSound, prevMusicSlot: this.prevMusicSlot, nextMusicSlot: this.nextMusicSlot,
+      prevCultureSlot: this.prevCultureSlot, nextCultureSlot: this.nextCultureSlot,
+    };
+  }
+}
+</script>
+</body>
+</html>
